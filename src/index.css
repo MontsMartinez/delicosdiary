@@ -1,0 +1,120 @@
+/* Importa las fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+/* Nuevas fuentes coreanas */
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-almost-black text-straw antialiased font-sans;
+    /* Para aplicar una textura de fondo global:
+    background-image: url('/assets/textures/vintage_paper_texture_dark.png'); 
+    background-repeat: repeat; 
+    */
+  }
+
+  /* Estilos base para encabezados (pueden ser sobrescritos para coreano) */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-semibold text-medium-topaz;
+  }
+  h1 { @apply text-4xl md:text-5xl mb-4 tracking-wide; }
+  h2 { @apply text-3xl md:text-4xl mb-3 tracking-wide; }
+  h3 { @apply text-2xl md:text-3xl mb-2; }
+
+  p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  a {
+    @apply text-medium-topaz hover:text-straw transition-colors duration-300 ease-in-out;
+  }
+
+  /* Estilo para el contenido generado por @tailwindcss/typography (clase 'prose') */
+  .prose {
+    @apply text-straw;
+  }
+  .prose :where(strong):not(:where([class~="not-prose"] *)) {
+    @apply text-straw font-semibold;
+  }
+  .prose :where(a):not(:where([class~="not-prose"] *)) {
+    @apply text-medium-topaz hover:text-straw font-semibold no-underline hover:underline;
+  }
+  .prose :where(code):not(:where([class~="not-prose"] *))::before,
+  .prose :where(code):not(:where([class~="not-prose"] *))::after {
+    content: ""; /* Eliminar las comillas por defecto si no te gustan */
+  }
+   .prose :where(code):not(:where([class~="not-prose"] *)) {
+    @apply text-muted-antique bg-dark-hazelnut/30 px-1 py-0.5 rounded-sm text-sm;
+  }
+
+  /* Clases específicas para texto en coreano */
+  .korean-text-title {
+    @apply font-korean-title;
+  }
+  .korean-text-handwriting {
+    @apply font-korean-handwriting;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply px-4 py-2 rounded-sm text-straw font-serif hover:bg-dark-mocha hover:text-medium-topaz transition-colors duration-300 ease-in-out tracking-wide;
+  }
+  .nav-link-active {
+    @apply bg-medium-topaz text-almost-black font-semibold shadow-glow-topaz;
+  }
+
+  .content-card {
+    @apply bg-dark-mocha/80 backdrop-blur-sm p-6 md:p-8 rounded-md shadow-xl border border-pewter-gray/30 ring-1 ring-inset ring-pewter-gray/20;
+    /* Para simular papel con textura dentro de la tarjeta:
+    background-image: url('/assets/textures/light_paper_texture.png');
+    background-blend-mode: multiply; // Experimenta con blend modes
+    */
+  }
+
+  .interactive-glow { /* Lo mantenemos si te gusta el efecto */
+    @apply transition-all duration-300 ease-in-out;
+  }
+  .interactive-glow:hover {
+    @apply shadow-glow-topaz scale-[1.03];
+  }
+
+  .btn-primary-vintage {
+    @apply inline-block bg-dark-hazelnut text-straw border-2 border-medium-topaz px-8 py-3 rounded-sm shadow-md hover:bg-medium-topaz hover:text-almost-black transition-all duration-300 ease-in-out font-serif tracking-wider transform hover:scale-105;
+  }
+  
+  .btn-secondary-vintage {
+    @apply inline-block bg-transparent text-medium-topaz border-2 border-medium-topaz px-6 py-2 rounded-sm hover:bg-medium-topaz hover:text-almost-black transition-all duration-300 ease-in-out font-serif tracking-wide transform hover:scale-105;
+  }
+
+  /* Clase para Capitulares (podrías querer una versión coreana) */
+  .drop-cap::first-letter {
+    @apply font-serif text-5xl text-medium-topaz float-left pr-2 leading-[0.8em] pt-1;
+  }
+  .drop-cap-korean::first-letter { /* Ejemplo para capitular coreana */
+    @apply font-korean-title text-5xl text-medium-topaz float-left pr-2 leading-[0.8em] pt-1; /* O Nanum Pen Script si prefieres */
+  }
+
+
+  /* Clase para Líneas Ornamentales (usar con un SVG o img) */
+  .ornamental-divider {
+    @apply w-full h-auto my-6 md:my-8 text-pewter-gray; /* Ajusta el color y tamaño */
+  }
+
+  /* Filtro Sepia para Imágenes */
+  .img-sepia {
+    /* Corregido: Usar sintaxis de corchetes para valores arbitrarios */
+    @apply filter sepia-[.7] contrast-[1.1] brightness-[.9]; 
+  }
+  .img-grayscale {
+     @apply filter grayscale;
+  }
+}

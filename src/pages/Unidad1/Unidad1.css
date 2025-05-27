@@ -1,0 +1,56 @@
+/* src/pages/Unidad1/Unidad1.css */
+
+/* Usaremos clases de Tailwind directamente en el JSX para la mayoría de los estilos, 
+   pero las animaciones complejas y la estructura 3D del libro van aquí. */
+
+.book-container {
+  perspective: 2000px;
+  width: 100%;
+  max-width: theme('maxWidth.xl'); /* Usa valores de tu tema de Tailwind */
+  /* md:max-width: theme('maxWidth.2xl'); */ /* Tailwind no permite esto directamente en CSS, se maneja en JSX */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.book {
+  width: 100%;
+  /* La altura se puede ajustar en el JSX con clases de Tailwind o aquí si es fija */
+  /* height: 600px; */ 
+  position: relative;
+  transform-style: preserve-3d; /* Cambiado de 3d a preserve-3d para mejor compatibilidad anidada */
+  transition: transform 1s ease-in-out;
+  cursor: pointer;
+}
+
+.book-cover,
+.book-page-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* backface-hidden de Tailwind */
+  overflow: hidden;
+}
+
+.book-cover {
+  /* Estilos de la portada (colores, bordes, etc. se aplican con Tailwind en JSX) */
+  transform-origin: left center;
+  z-index: 10;
+}
+
+.book.open .book-cover {
+  transform: rotateY(-160deg); /* Ángulo de apertura */
+  /* box-shadow: none; */ /* Puedes manejar esto con clases de Tailwind condicionales */
+}
+
+.book-page-content {
+  /* Estilos de las páginas interiores (colores, etc. con Tailwind en JSX) */
+  transform: rotateY(0deg); /* Inicialmente no visible directamente si la portada está encima */
+  z-index: 5;
+}
+
+/* Media query para tamaños de pantalla más grandes si es necesario ajustar max-width */
+@media (min-width: theme('screens.md')) {
+  .book-container {
+    max-width: theme('maxWidth.2xl');
+  }
+}
