@@ -1,0 +1,157 @@
+/* src/pages/Unidad2/Unidad2.css */
+
+/* --- Estilos de Animación del Libro (Adaptados de Unidad1.css) --- */
+.book-container-u2 {
+  perspective: 2500px;
+  width: 100%;
+  max-width: theme('maxWidth.2xl');
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.book-u2 {
+  width: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.book-cover-u2,
+.book-interior-u2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.book-cover-u2 {
+  transform-origin: left center;
+  z-index: 10;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(0,0,0,0.1);
+}
+
+.book-u2.open .book-cover-u2 {
+  transform: rotateY(-170deg);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.4);
+}
+
+.book-interior-u2 {
+  transform: rotateY(0deg);
+  z-index: 5;
+  display: flex;
+}
+
+.book-interior-u2::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: theme('spacing.4');
+  bottom: theme('spacing.4');
+  width: 3px;
+  background-image: linear-gradient(to right, 
+    rgba(0,0,0,0.05), 
+    rgba(0,0,0,0.15), 
+    rgba(0,0,0,0.05)
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.page-area-u2 {
+  width: 50%;
+  padding: theme('spacing.4') theme('spacing.3'); /* Reducir padding lateral para más espacio para paneles */
+  /* md:padding: theme('spacing.6') theme('spacing.4'); */
+  box-sizing: border-box;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* --- Estilos para la Historieta (Manga Irregular) --- */
+.comic-grid {
+  display: grid;
+  /* Definimos una cuadrícula base de 2 columnas para el layout irregular */
+  grid-template-columns: repeat(2, 1fr); 
+  /* auto-rows: minmax(150px, auto); */ /* Altura automática para las filas, o define una base */
+  gap: theme('spacing.3'); /* Espacio entre paneles reducido */
+  padding: theme('spacing.1');
+}
+
+.comic-panel {
+  @apply relative overflow-hidden rounded-md border-2 border-dark-mocha/50 shadow-md;
+  /* El aspect ratio se definirá por las clases de layout o el contenido de la imagen */
+  /* background-color: theme('colors.pewter-gray'); */
+}
+
+.comic-panel img {
+  @apply w-full h-full object-cover transition-transform duration-300 ease-in-out;
+}
+
+.comic-panel:hover img {
+  @apply scale-105;
+}
+
+/* Clases para paneles irregulares */
+.panel-normal {
+  @apply aspect-[3/4]; /* Proporción estándar */
+}
+
+.panel-wide {
+  @apply aspect-[16/9] sm:col-span-2; /* Ocupa 2 columnas en pantallas sm y mayores */
+                                     /* En pantallas muy pequeñas, podría ser 1 columna */
+}
+
+.panel-tall {
+  @apply aspect-[9/16] sm:row-span-2; /* Ocupa 2 filas en pantallas sm y mayores */
+                                     /* Requiere que la grid tenga filas explícitas o que el contenido lo fuerce */
+                                     /* Para que row-span funcione bien, la grid necesita saber cuántas filas hay o tener una altura definida */
+}
+.panel-large {
+    @apply aspect-square sm:col-span-2 sm:row-span-2; /* Ejemplo de panel grande */
+}
+
+
+.comic-text-strip {
+  @apply absolute left-0 right-0 p-2 bg-black/70 text-white text-center 
+         opacity-0 transition-all duration-300 ease-in-out font-korean-handwriting text-base md:text-lg; /* Ajustar tamaño de texto */
+}
+
+.comic-panel:hover .comic-text-strip-top {
+  @apply opacity-100 -translate-y-0 top-0;
+}
+.comic-text-strip-top {
+  @apply top-0 translate-y-[-100%];
+}
+
+.comic-panel:hover .comic-text-strip-bottom {
+  @apply opacity-100 translate-y-0 bottom-0;
+}
+.comic-text-strip-bottom {
+  @apply bottom-0 translate-y-[100%];
+}
+
+@media (min-width: theme('screens.md')) {
+  .book-container-u2 {
+    max-width: theme('maxWidth.4xl'); /* Más ancho para acomodar mejor el grid */
+  }
+  .page-area-u2 {
+    padding: theme('spacing.6') theme('spacing.4');
+  }
+  .comic-grid {
+    grid-template-columns: repeat(2, 1fr); /* Mantenemos 2 columnas en desktop para el ejemplo */
+                                          /* Podrías cambiar a repeat(3, 1fr) si tienes muchos paneles */
+    gap: theme('spacing.4');
+  }
+  /* Si quieres que en desktop los wide panels siempre ocupen 2 columnas */
+  .panel-wide {
+    @apply col-span-2;
+  }
+  .panel-tall {
+    @apply row-span-2; 
+  }
+  .panel-large {
+    @apply col-span-2 row-span-2;
+  }
+}

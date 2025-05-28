@@ -1,56 +1,96 @@
 /* src/pages/Unidad1/Unidad1.css */
 
-/* Usaremos clases de Tailwind directamente en el JSX para la mayoría de los estilos, 
-   pero las animaciones complejas y la estructura 3D del libro van aquí. */
-
 .book-container {
-  perspective: 2000px;
+  perspective: 2500px; 
   width: 100%;
-  max-width: theme('maxWidth.xl'); /* Usa valores de tu tema de Tailwind */
-  /* md:max-width: theme('maxWidth.2xl'); */ /* Tailwind no permite esto directamente en CSS, se maneja en JSX */
+  max-width: theme('maxWidth.xl');
   margin-left: auto;
   margin-right: auto;
 }
 
 .book {
   width: 100%;
-  /* La altura se puede ajustar en el JSX con clases de Tailwind o aquí si es fija */
-  /* height: 600px; */ 
   position: relative;
-  transform-style: preserve-3d; /* Cambiado de 3d a preserve-3d para mejor compatibilidad anidada */
-  transition: transform 1s ease-in-out;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); 
   cursor: pointer;
 }
 
 .book-cover,
-.book-page-content {
+.book-interior { 
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* backface-hidden de Tailwind */
+  backface-visibility: hidden;
   overflow: hidden;
 }
 
 .book-cover {
-  /* Estilos de la portada (colores, bordes, etc. se aplican con Tailwind en JSX) */
   transform-origin: left center;
   z-index: 10;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(0,0,0,0.1);
 }
 
 .book.open .book-cover {
-  transform: rotateY(-160deg); /* Ángulo de apertura */
-  /* box-shadow: none; */ /* Puedes manejar esto con clases de Tailwind condicionales */
+  transform: rotateY(-170deg); 
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.4);
 }
 
-.book-page-content {
-  /* Estilos de las páginas interiores (colores, etc. con Tailwind en JSX) */
-  transform: rotateY(0deg); /* Inicialmente no visible directamente si la portada está encima */
+.book-interior {
+  transform: rotateY(0deg); 
   z-index: 5;
+  display: flex; 
 }
 
-/* Media query para tamaños de pantalla más grandes si es necesario ajustar max-width */
+/* Simulación del lomo central de las páginas interiores */
+.book-interior::before {
+  content: "";
+  position: absolute;
+  /* Ajustamos la posición del lomo para que esté entre 1/3 y 2/3 */
+  left: calc(100% / 3); 
+  top: theme('spacing.4'); 
+  bottom: theme('spacing.4'); 
+  width: 3px; 
+  background-image: linear-gradient(to right, 
+    rgba(0,0,0,0.05), 
+    rgba(0,0,0,0.15), 
+    rgba(0,0,0,0.05)
+  ); 
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 1; /* Para que esté encima del fondo de las páginas pero debajo del contenido */
+}
+
+.left-page-area,
+.right-page-area {
+  padding: theme('spacing.6') theme('spacing.8'); 
+  box-sizing: border-box;
+  overflow-y: auto; 
+  position: relative; /* Para que el contenido esté sobre el pseudo-elemento del lomo si es necesario */
+}
+
+.left-page-area {
+  width: calc(100% / 3); /* Página izquierda ocupa 1/3 */
+  padding-right: theme('spacing.4'); 
+}
+.right-page-area {
+  width: calc(200% / 3); /* Página derecha ocupa 2/3 */
+  padding-left: theme('spacing.4'); 
+}
+
+
 @media (min-width: theme('screens.md')) {
   .book-container {
-    max-width: theme('maxWidth.2xl');
+    max-width: theme('maxWidth.3xl'); 
+  }
+  .left-page-area,
+  .right-page-area {
+    padding: theme('spacing.8') theme('spacing.10');
+  }
+  .left-page-area {
+    padding-right: theme('spacing.5');
+  }
+  .right-page-area {
+    padding-left: theme('spacing.5');
   }
 }
