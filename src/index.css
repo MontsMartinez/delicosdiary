@@ -117,4 +117,24 @@
   .img-grayscale {
      @apply filter grayscale;
   }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;  /* Ancho del scrollbar vertical */
+    height: 8px; /* Altura del scrollbar horizontal */
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-dark-mocha/20 rounded-lg; /* Fondo del track, sutil */
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-dark-hazelnut rounded-lg border-2 border-transparent bg-clip-content; /* Color del thumb (barra) */
+    /* bg-clip-content con borde transparente da un efecto de padding al thumb */
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-medium-topaz; /* Color del thumb al pasar el mouse */
+  }
+  /* Para Firefox (opcional, la estilización es más limitada) */
+  .custom-scrollbar {
+    scrollbar-width: thin; /* "auto" o "thin" */
+    scrollbar-color: theme('colors.dark-hazelnut') theme('colors.dark-mocha / 0.2'); /* thumb track */
+  }
 }

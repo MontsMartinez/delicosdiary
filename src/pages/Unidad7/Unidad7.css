@@ -1,0 +1,136 @@
+/* src/pages/Unidad7/Unidad7.css */
+
+/* --- Estilos de Animación del Libro --- */
+.book-container-u7 {
+  perspective: 2500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  padding-top: theme('spacing.8'); 
+  padding-bottom: theme('spacing.8');
+}
+
+.book-u7 {
+  width: 100%; 
+  max-width: theme('maxWidth.3xl'); /* MAX-WIDTH CERRADO */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.book-u7.open {
+  max-width: theme('maxWidth.6xl'); /* MAX-WIDTH ABIERTO */
+}
+
+.book-cover-u7,
+.book-interior-u7 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.book-cover-u7 {
+  transform-origin: left center;
+  z-index: 10;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(0,0,0,0.1);
+}
+
+.book-u7.open .book-cover-u7 {
+  transform: rotateY(-170deg);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.4);
+}
+
+.book-interior-u7 {
+  transform: rotateY(0deg);
+  z-index: 5;
+  display: flex; 
+}
+
+.book-interior-u7::before {
+  content: "";
+  position: absolute;
+  left: 50%; 
+  top: theme('spacing.4');
+  bottom: theme('spacing.4');
+  width: 3px;
+  background-image: linear-gradient(to right, 
+    rgba(0,0,0,0.05), 
+    rgba(0,0,0,0.15), 
+    rgba(0,0,0,0.05)
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.page-area-u7 { 
+  width: 50%; 
+  padding: theme('spacing.6') theme('spacing.4'); 
+  box-sizing: border-box;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* --- Estilos para el Observatorio Meteorológico --- */
+.observatory-panel {
+  @apply flex flex-col items-center justify-around h-full text-center p-2 md:p-4;
+}
+
+.instrument-dial {
+  @apply relative w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-dark-mocha bg-straw shadow-lg mb-4;
+  /* Aquí podrías poner una imagen de fondo de un dial antiguo */
+}
+.instrument-dial .dial-pointer {
+  @apply absolute w-2 h-1/2 bg-dark-hazelnut top-0 left-1/2 -ml-1 rounded-b-full origin-bottom transition-transform duration-500 ease-out;
+  /* Estilo de la aguja */
+}
+.instrument-dial .dial-label {
+  @apply absolute font-korean-title text-xs md:text-sm text-almost-black/80;
+}
+
+.instrument-slider-container {
+  @apply w-full max-w-xs mb-4;
+}
+.instrument-slider-container label {
+  @apply block font-korean-title text-dark-mocha mb-1 text-sm;
+}
+.instrument-slider-container input[type="range"] {
+  @apply w-full cursor-pointer;
+  /* Estilos personalizados para el slider si es necesario */
+}
+.slider-value {
+  @apply font-korean-handwriting text-medium-topaz text-lg mt-1;
+}
+
+
+.weather-report-page {
+  @apply p-4 md:p-6 h-full flex flex-col;
+}
+.weather-report-title {
+  @apply font-korean-title text-3xl md:text-4xl text-dark-mocha mb-4 text-center border-b-2 border-dark-hazelnut/30 pb-2;
+}
+.weather-report-text-area {
+  @apply flex-grow bg-straw/70 p-4 rounded-md border border-dark-mocha/30 shadow-inner min-h-[200px];
+}
+.weather-report-text {
+  @apply font-korean-handwriting text-xl md:text-2xl text-almost-black leading-relaxed whitespace-pre-line; /* whitespace-pre-line para respetar saltos de línea */
+}
+.weather-report-text .highlight {
+  @apply font-korean-title text-medium-topaz;
+}
+
+.clothing-suggestion img {
+    @apply w-16 h-16 md:w-20 md:h-20 object-contain inline-block mx-1 border border-dark-mocha/20 rounded p-1 bg-straw/50;
+}
+
+@media (min-width: theme('screens.md')) {
+   .page-area-u7 {
+    padding: theme('spacing.8') theme('spacing.6');
+  }
+}

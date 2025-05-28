@@ -1,0 +1,147 @@
+/* src/pages/Unidad4/Unidad4.css */
+
+/* --- Estilos de Animación del Libro (Similares a Unidades anteriores) --- */
+.book-container-u4 { /* Sufijo para esta unidad */
+  perspective: 2500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* Eliminado padding-left y padding-right para que el centrado sea más directo */
+  /* padding-left: theme('spacing.4'); */
+  /* padding-right: theme('spacing.4'); */
+}
+
+.book-u4 {
+  width: 100%;
+  max-width: theme('maxWidth.3xl'); /* MAX-WIDTH CERRADO */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  margin-left: auto; /* Asegura el centrado si el contenedor flex no lo hace o para block display */
+  margin-right: auto; /* Asegura el centrado */
+  /* La altura se define con clases de Tailwind en el JSX */
+}
+
+.book-u4.open {
+  max-width: theme('maxWidth.6xl'); /* MAX-WIDTH ABIERTO */
+}
+
+.book-cover-u4,
+.book-interior-u4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.book-cover-u4 {
+  transform-origin: left center;
+  z-index: 10;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(0,0,0,0.1);
+}
+
+.book-u4.open .book-cover-u4 {
+  transform: rotateY(-170deg);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.4);
+}
+
+.book-interior-u4 {
+  transform: rotateY(0deg);
+  z-index: 5;
+  display: flex; 
+}
+
+/* Lomo central para páginas interiores IGUALES */
+.book-interior-u4::before {
+  content: "";
+  position: absolute;
+  left: 50%; 
+  top: theme('spacing.4');
+  bottom: theme('spacing.4');
+  width: 3px;
+  background-image: linear-gradient(to right, 
+    rgba(0,0,0,0.05), 
+    rgba(0,0,0,0.15), 
+    rgba(0,0,0,0.05)
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.page-area-u4 { 
+  width: 50%; 
+  padding: theme('spacing.6') theme('spacing.4'); 
+  box-sizing: border-box;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* --- Estilos para el Diálogo Interactivo --- */
+.dialogue-line {
+  @apply mb-4 p-3 rounded-md;
+}
+
+.speaker-vendedor { /* Vendedor */
+  @apply bg-dark-hazelnut/30 text-straw text-left mr-auto max-w-[85%];
+  border-top-left-radius: theme('borderRadius.md');
+  border-top-right-radius: theme('borderRadius.md');
+  border-bottom-right-radius: theme('borderRadius.md');
+  border-bottom-left-radius: theme('borderRadius.none'); /* Estilo bocadillo */
+}
+.speaker-vendedor .speaker-name {
+  @apply font-korean-title text-medium-topaz text-sm block mb-1;
+}
+
+.speaker-usuario { /* Usuario */
+  @apply bg-medium-topaz/20 text-almost-black text-right ml-auto max-w-[85%];
+  border-top-left-radius: theme('borderRadius.md');
+  border-top-right-radius: theme('borderRadius.md');
+  border-bottom-left-radius: theme('borderRadius.md');
+  border-bottom-right-radius: theme('borderRadius.none'); /* Estilo bocadillo */
+}
+.speaker-usuario .speaker-name {
+  @apply font-korean-title text-dark-hazelnut text-sm block mb-1 text-right;
+}
+
+.dialogue-text {
+  @apply font-korean-handwriting text-xl md:text-2xl leading-relaxed;
+}
+
+.dialogue-blank-options button {
+  @apply font-korean-handwriting text-lg bg-straw text-almost-black border border-dark-hazelnut/50 rounded-md px-3 py-1 m-1 hover:bg-medium-topaz hover:text-white transition-colors;
+}
+
+.dialogue-blank-options button.selected {
+  @apply bg-medium-topaz text-white ring-2 ring-offset-1 ring-offset-muted-antique ring-medium-topaz;
+}
+.dialogue-blank-options button.correct {
+  @apply bg-green-500 text-white;
+}
+.dialogue-blank-options button.incorrect {
+  @apply bg-red-500 text-white;
+}
+
+.feedback-message {
+  @apply mt-2 text-sm font-serif;
+}
+.feedback-message.correct {
+  @apply text-green-600;
+}
+.feedback-message.incorrect {
+  @apply text-red-600;
+}
+
+
+@media (min-width: theme('screens.md')) {
+  .book-container-u4 {
+    /* Se elimina max-width de aquí, ya que .book-u4 lo controla y el container es flex */
+  }
+   .page-area-u4 {
+    padding: theme('spacing.8') theme('spacing.6');
+  }
+}

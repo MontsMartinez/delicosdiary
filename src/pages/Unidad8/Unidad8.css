@@ -1,0 +1,161 @@
+/* src/pages/Unidad8/Unidad8.css */
+
+/* --- Estilos de Animación del Libro --- */
+.book-container-u8 { /* Sufijo para esta unidad */
+  perspective: 2500px;
+  width: 100%; /* El contenedor toma el ancho completo de su padre */
+  display: flex;
+  justify-content: center; /* Centra el .book-u8 horizontalmente */
+  align-items: center; 
+  padding-top: theme('spacing.8'); 
+  padding-bottom: theme('spacing.8');
+}
+
+.book-u8 {
+  /* width: 100%; */ /* ELIMINADO: Dejar que max-width y el flex parent manejen el tamaño y centrado */
+  max-width: theme('maxWidth.3xl'); /* MAX-WIDTH CERRADO */
+  /* AÑADIDO: Para asegurar que el libro tome el ancho necesario hasta su max-width */
+  /* Si el contenido del libro es más pequeño que max-width, esto ayuda. */
+  /* Sin embargo, para un elemento flex centrado, esto no debería ser estrictamente necesario si max-width está definido. */
+  /* Vamos a probar sin width: 100% primero. Si el libro se encoge demasiado, lo reañadimos. */
+  width: -moz-fit-content; /* Firefox */
+  width: fit-content;    /* Standard, para que tome el ancho de su contenido hasta el max-width */
+  min-width: min(100%, theme('maxWidth.3xl')); /* Asegura que al menos intente ser responsive hasta 3xl */
+
+
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  /* margin-left y margin-right auto no son necesarios porque el padre es flex con justify-content: center */
+  /* La altura se define con clases de Tailwind en el JSX */
+}
+
+.book-u8.open {
+  max-width: theme('maxWidth.6xl'); /* MAX-WIDTH ABIERTO */
+  min-width: min(100%, theme('maxWidth.6xl')); /* Ajustar min-width cuando está abierto también */
+}
+
+.book-cover-u8,
+.book-interior-u8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.book-cover-u8 {
+  transform-origin: left center;
+  z-index: 10;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(0,0,0,0.1);
+}
+
+.book-u8.open .book-cover-u8 {
+  transform: rotateY(-170deg);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.4);
+}
+
+.book-interior-u8 {
+  transform: rotateY(0deg);
+  z-index: 5;
+  display: flex; 
+}
+
+/* Lomo central para páginas interiores IGUALES */
+.book-interior-u8::before {
+  content: "";
+  position: absolute;
+  left: 50%; 
+  top: theme('spacing.4');
+  bottom: theme('spacing.4');
+  width: 3px;
+  background-image: linear-gradient(to right, 
+    rgba(0,0,0,0.05), 
+    rgba(0,0,0,0.15), 
+    rgba(0,0,0,0.05)
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.page-area-u8 { 
+  width: 50%; 
+  padding: theme('spacing.4') theme('spacing.3'); 
+  box-sizing: border-box;
+  overflow-y: auto; 
+  position: relative;
+}
+
+/* --- Estilos para el Horario de Trenes --- */
+.train-schedule-container {
+  @apply w-full h-full flex flex-col items-center p-2 md:p-4;
+}
+
+.schedule-title {
+  @apply font-korean-title text-3xl md:text-4xl text-dark-mocha mb-4 text-center border-b-2 border-dark-hazelnut/40 pb-2;
+}
+
+.schedule-controls {
+  @apply mb-4 flex flex-wrap gap-2 justify-center items-center p-2 bg-dark-mocha/10 rounded-md;
+}
+.schedule-controls label {
+  @apply font-serif text-sm text-dark-hazelnut mr-1;
+}
+.schedule-controls select, .schedule-controls button {
+  @apply font-korean-title text-sm p-1.5 border border-dark-mocha/50 rounded-md bg-straw text-almost-black focus:ring-medium-topaz focus:border-medium-topaz;
+}
+.schedule-controls button {
+  @apply hover:bg-medium-topaz hover:text-white transition-colors;
+}
+
+
+.train-schedule-table-wrapper {
+  @apply w-full overflow-x-auto custom-scrollbar border border-dark-mocha/30 rounded-md shadow-md;
+}
+
+.train-schedule-table {
+  @apply w-full min-w-[600px] text-sm text-left border-collapse;
+}
+.train-schedule-table th, .train-schedule-table td {
+  @apply p-2 md:p-3 border border-dark-hazelnut/30;
+}
+.train-schedule-table th {
+  @apply bg-dark-hazelnut text-straw font-korean-title tracking-wide;
+}
+.train-schedule-table td {
+  @apply bg-straw/80 text-almost-black font-sans;
+}
+.train-schedule-table tbody tr:nth-child(even) td {
+  @apply bg-straw/60;
+}
+.train-schedule-table tbody tr.highlighted td {
+  @apply bg-medium-topaz/30 text-dark-mocha font-semibold;
+}
+.train-schedule-table tbody tr:hover td {
+  @apply bg-medium-topaz/20;
+}
+
+.query-result-display {
+  @apply mt-4 p-3 bg-dark-mocha/10 rounded-md text-center min-h-[50px];
+}
+.query-result-text {
+  @apply font-korean-handwriting text-lg md:text-xl text-almost-black;
+}
+.query-result-text .highlight {
+  @apply font-korean-title text-medium-topaz;
+}
+
+
+@media (min-width: theme('screens.md')) {
+  /* .book-container-u8 { Ya no se necesita ajustar max-width aquí } */
+   .page-area-u8 {
+    padding: theme('spacing.6') theme('spacing.4');
+  }
+  .train-schedule-table {
+    @apply text-base;
+  }
+}

@@ -1,0 +1,26 @@
+/* src/pages/Conclusiones/Conclusiones.css */
+
+/* Estilo para el contenedor del colofón y la firma, si se necesita un layout específico */
+.colophon-section {
+  @apply mt-12 pt-6 border-t-2 border-dark-hazelnut/30 text-center;
+}
+
+.author-signature {
+  @apply font-manuscript text-3xl text-dark-mocha mt-8 mb-4;
+  /* Si usas una imagen para la firma: */
+  /* @apply w-48 h-auto mx-auto; */
+}
+
+.dojang-seal { /* Estilo para un sello simulado */
+  @apply w-16 h-16 md:w-20 md:h-20 mx-auto mt-4 p-2 border-4 border-red-700/80 bg-red-700/20 text-red-700/90 rounded-sm flex items-center justify-center font-korean-title text-2xl;
+  /* Rotación ligera para un look más auténtico */
+  transform: rotate(-5deg);
+  font-family: 'Song Myung', serif; /* Asegurar que use una fuente coreana si es un carácter */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.finis-button-container {
+  @apply mt-12 text-center;
+}
+
+/* Puedes añadir más estilos específicos aquí si es necesario */

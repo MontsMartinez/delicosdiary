@@ -1,0 +1,149 @@
+/* src/pages/Unidad6/Unidad6.css */
+
+/* --- Estilos de Animación del Libro (Similares a Unidades anteriores) --- */
+.book-container-u6 { /* Sufijo para esta unidad */
+  perspective: 2500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Añadido para centrado vertical si la altura del libro es menor que el contenedor */
+}
+
+.book-u6 {
+  /* width: 100%; */ /* ELIMINADO - Dejar que el max-width y el flex parent lo manejen */
+  max-width: theme('maxWidth.3xl'); /* MAX-WIDTH CERRADO */
+  width: 100%; /* AÑADIDO DE NUEVO: Para que ocupe el espacio disponible hasta el max-width */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  /* margin-left: auto; ELIMINADO */
+  /* margin-right: auto; ELIMINADO */
+  /* La altura se define con clases de Tailwind en el JSX */
+}
+
+.book-u6.open {
+  max-width: theme('maxWidth.6xl'); /* MAX-WIDTH ABIERTO */
+}
+
+.book-cover-u6,
+.book-interior-u6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.book-cover-u6 {
+  transform-origin: left center;
+  z-index: 10;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(0,0,0,0.1);
+}
+
+.book-u6.open .book-cover-u6 {
+  transform: rotateY(-170deg);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.4);
+}
+
+.book-interior-u6 {
+  transform: rotateY(0deg);
+  z-index: 5;
+  display: flex; 
+}
+
+/* Lomo central para páginas interiores IGUALES */
+.book-interior-u6::before {
+  content: "";
+  position: absolute;
+  left: 50%; 
+  top: theme('spacing.4');
+  bottom: theme('spacing.4');
+  width: 3px;
+  background-image: linear-gradient(to right, 
+    rgba(0,0,0,0.05), 
+    rgba(0,0,0,0.15), 
+    rgba(0,0,0,0.05)
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.page-area-u6 { 
+  width: 50%; 
+  padding: theme('spacing.2') theme('spacing.2'); 
+  box-sizing: border-box;
+  overflow-y: auto; 
+  position: relative;
+}
+
+/* --- Estilos para el Mapa de Aventuras --- */
+.adventure-map-container {
+  @apply relative flex justify-center items-center w-full h-full p-4;
+}
+
+.adventure-map-image {
+  @apply absolute inset-0 w-full h-full object-cover; 
+}
+
+.adventure-path { 
+  @apply absolute inset-0 w-full h-full pointer-events-none; 
+}
+.adventure-path path {
+  stroke: theme('colors.medium-topaz');
+  stroke-width: 3px;
+  stroke-dasharray: 5, 5; 
+  fill: none;
+  animation: drawPath 5s linear forwards; 
+}
+
+@keyframes drawPath {
+  from { stroke-dashoffset: 1000; } 
+  to { stroke-dashoffset: 0; }
+}
+
+.point-of-interest {
+  @apply absolute transform -translate-x-1/2 -translate-y-1/2 
+         p-1.5 bg-dark-hazelnut rounded-full shadow-lg cursor-pointer
+         hover:scale-125 hover:bg-medium-topaz transition-all duration-200;
+}
+.point-of-interest-icon {
+  @apply w-4 h-4 text-straw; 
+}
+
+.log-entry-modal {
+  @apply fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50 animate-fade-in;
+}
+.log-entry-content {
+  @apply bg-muted-antique p-6 md:p-8 rounded-lg shadow-2xl max-w-lg w-full 
+         border-4 border-dark-mocha text-almost-black relative
+         font-serif;
+}
+.log-entry-content .close-button {
+  @apply absolute top-3 right-3 text-dark-mocha hover:text-medium-topaz text-2xl;
+}
+.log-entry-title {
+  @apply font-korean-title text-2xl md:text-3xl text-dark-mocha mb-3;
+}
+.log-entry-text {
+  @apply font-korean-handwriting text-xl md:text-2xl text-almost-black/90 mb-4 leading-relaxed;
+}
+.log-entry-illustration {
+  @apply w-full max-w-xs mx-auto rounded-md border-2 border-dark-hazelnut/50 shadow-md my-4;
+}
+
+
+@media (min-width: theme('screens.md')) {
+  .book-container-u6 {
+    /* max-width: theme('maxWidth.5xl');  Ya no es necesario aquí */
+  }
+   .page-area-u6 {
+    padding: theme('spacing.4') theme('spacing.3');
+  }
+  .point-of-interest-icon {
+    @apply w-5 h-5;
+  }
+}

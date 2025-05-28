@@ -1,0 +1,92 @@
+/* src/pages/Unidad3/Unidad3.css */
+
+.book-container-u3 { 
+  perspective: 2500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-left: theme('spacing.4');
+  padding-right: theme('spacing.4');
+}
+
+.book-u3 {
+  width: 100%;
+  max-width: theme('maxWidth.3xl'); /* MAX-WIDTH CERRADO */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.book-u3.open {
+  max-width: theme('maxWidth.6xl'); /* MAX-WIDTH ABIERTO */
+}
+
+.book-cover-u3,
+.book-interior-u3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.book-cover-u3 {
+  transform-origin: left center;
+  z-index: 10;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(0,0,0,0.1);
+}
+
+.book-u3.open .book-cover-u3 {
+  transform: rotateY(-170deg);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.4);
+}
+
+.book-interior-u3 {
+  transform: rotateY(0deg);
+  z-index: 5;
+  display: flex; 
+}
+
+.book-interior-u3::before {
+  content: "";
+  position: absolute;
+  left: 50%; 
+  top: theme('spacing.4');
+  bottom: theme('spacing.4');
+  width: 3px;
+  background-image: linear-gradient(to right, 
+    rgba(0,0,0,0.05), 
+    rgba(0,0,0,0.15), 
+    rgba(0,0,0,0.05)
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.page-area-u3 { 
+  width: 50%; 
+  padding: theme('spacing.6') theme('spacing.4'); 
+  box-sizing: border-box;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Estilos para la imagen del ropero y frases */
+.wardrobe-image-container {
+  @apply relative flex justify-center items-center w-full h-full p-4;
+}
+
+.wardrobe-image {
+  @apply max-w-full max-h-[80%] object-contain shadow-lg rounded-md border-2 border-dark-mocha/30;
+}
+
+.location-phrase {
+  @apply absolute p-2 bg-straw/80 text-almost-black rounded-md shadow-md 
+         font-korean-handwriting text-lg leading-tight border border-dark-hazelnut/50;
+}
+
+/* @media (min-width: theme('screens.md')) { ... } */ /* Ya no se necesita para max-width del container */

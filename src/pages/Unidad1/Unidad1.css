@@ -81,7 +81,7 @@
 
 @media (min-width: theme('screens.md')) {
   .book-container {
-    max-width: theme('maxWidth.3xl'); 
+    max-width: theme('maxWidth.6xl'); 
   }
   .left-page-area,
   .right-page-area {
