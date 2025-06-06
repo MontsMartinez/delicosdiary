@@ -1,39 +1,27 @@
 /* src/pages/Unidad8/Unidad8.css */
 
 /* --- Estilos de Animación del Libro --- */
-.book-container-u8 { /* Sufijo para esta unidad */
+.book-container-u8 {
   perspective: 2500px;
-  width: 100%; /* El contenedor toma el ancho completo de su padre */
+  width: 100%;
   display: flex;
-  justify-content: center; /* Centra el .book-u8 horizontalmente */
+  justify-content: center;
   align-items: center; 
   padding-top: theme('spacing.8'); 
   padding-bottom: theme('spacing.8');
 }
 
 .book-u8 {
-  /* width: 100%; */ /* ELIMINADO: Dejar que max-width y el flex parent manejen el tamaño y centrado */
+  width: 100%; 
   max-width: theme('maxWidth.3xl'); /* MAX-WIDTH CERRADO */
-  /* AÑADIDO: Para asegurar que el libro tome el ancho necesario hasta su max-width */
-  /* Si el contenido del libro es más pequeño que max-width, esto ayuda. */
-  /* Sin embargo, para un elemento flex centrado, esto no debería ser estrictamente necesario si max-width está definido. */
-  /* Vamos a probar sin width: 100% primero. Si el libro se encoge demasiado, lo reañadimos. */
-  width: -moz-fit-content; /* Firefox */
-  width: fit-content;    /* Standard, para que tome el ancho de su contenido hasta el max-width */
-  min-width: min(100%, theme('maxWidth.3xl')); /* Asegura que al menos intente ser responsive hasta 3xl */
-
-
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
-  /* margin-left y margin-right auto no son necesarios porque el padre es flex con justify-content: center */
-  /* La altura se define con clases de Tailwind en el JSX */
 }
 
 .book-u8.open {
   max-width: theme('maxWidth.6xl'); /* MAX-WIDTH ABIERTO */
-  min-width: min(100%, theme('maxWidth.6xl')); /* Ajustar min-width cuando está abierto también */
 }
 
 .book-cover-u8,
@@ -64,7 +52,6 @@
   display: flex; 
 }
 
-/* Lomo central para páginas interiores IGUALES */
 .book-interior-u8::before {
   content: "";
   position: absolute;
@@ -112,9 +99,9 @@
   @apply hover:bg-medium-topaz hover:text-white transition-colors;
 }
 
-
+/* CORRECCIÓN: Se eliminó 'custom-scrollbar' de la directiva @apply */
 .train-schedule-table-wrapper {
-  @apply w-full overflow-x-auto custom-scrollbar border border-dark-mocha/30 rounded-md shadow-md;
+  @apply w-full overflow-x-auto border border-dark-mocha/30 rounded-md shadow-md;
 }
 
 .train-schedule-table {
@@ -151,7 +138,9 @@
 
 
 @media (min-width: theme('screens.md')) {
-  /* .book-container-u8 { Ya no se necesita ajustar max-width aquí } */
+  .book-container-u8 {
+    max-width: theme('maxWidth.5xl'); 
+  }
    .page-area-u8 {
     padding: theme('spacing.6') theme('spacing.4');
   }

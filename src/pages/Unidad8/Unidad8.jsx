@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { 
     FiBookOpen, FiChevronsRight, FiArrowLeft, FiArrowRight, 
-    FiClock, FiSearch, FiNavigation, FiCalendar, FiAnchor // CAMBIO: FiTrain a FiNavigation
+    FiClock, FiSearch, FiNavigation, FiCalendar, FiAnchor 
 } from 'react-icons/fi';
 import './Unidad8.css'; 
 import { datosUnidades } from '../../data/unidadesData';
@@ -90,7 +90,7 @@ function Unidad8() {
     <div className="animate-fade-in py-8 md:py-12">
       <div className="book-container-u8">
         <div
-          className={`book-u8 ${isBookOpen ? 'open' : ''} h-[600px] md:h-[750px]`} 
+          className={`book-u8 ${isBookOpen ? 'open' : ''} h-[600px] md:h-[750px]`}
           onClick={() => !isBookOpen && setIsBookOpen(true)}
         >
           {/* Portada del Libro */}
@@ -106,7 +106,6 @@ function Unidad8() {
               </p>
             </div>
             <div className="my-auto p-4 border-2 border-medium-topaz/50 rounded bg-dark-mocha/30">
-               {/* CAMBIO: FiTrain a FiNavigation */}
                <FiNavigation className="text-5xl md:text-6xl text-straw mx-auto" style={{filter: 'drop-shadow(1px 1px 2px rgba(0,0,0,0.5))'}}/>
               <p className="font-korean-title text-3xl text-straw mt-2">
                 시간 여행
@@ -124,7 +123,7 @@ function Unidad8() {
 
           {/* Contenido Interior del Libro */}
           <div className="book-interior-u8 bg-muted-antique text-almost-black rounded-lg shadow-inner-page">
-            {/* Ambas páginas mostrarán el horario y controles */}
+            {/* CORRECCIÓN: Se añade 'custom-scrollbar' directamente aquí */}
             <div className="page-area-u8 custom-scrollbar">
               <div className="train-schedule-container">
                 <h2 className="schedule-title">{unidadData.tituloCoreano}</h2>
@@ -155,9 +154,11 @@ function Unidad8() {
               </div>
             </div>
 
+             {/* CORRECCIÓN: Se añade 'custom-scrollbar' directamente aquí */}
             <div className="page-area-u8 custom-scrollbar">
               <div className="train-schedule-container">
-                <div className="train-schedule-table-wrapper">
+                {/* CORRECCIÓN: Se añade 'custom-scrollbar' al div que realmente tiene el overflow-x */}
+                <div className="train-schedule-table-wrapper custom-scrollbar">
                   <table className="train-schedule-table">
                     <thead>
                       <tr>
@@ -176,7 +177,6 @@ function Unidad8() {
                             ? 'opacity-50' 
                             : 'hover:bg-medium-topaz/20'
                         }>
-                          {/* CAMBIO: FiTrain a FiNavigation */}
                           <td>{train.id.includes("F") ? <FiAnchor className="inline mr-1 text-blue-600"/> : <FiNavigation className="inline mr-1"/>}{train.id}</td>
                           <td>{train.destination}</td>
                           <td>{train.departureDay}</td>
