@@ -1,0 +1,21 @@
+# Versión de la sintaxis de Docker Compose
+version: '3.8'
+
+# Definición de los servicios (contenedores) que compondrán nuestra aplicación
+services:
+  # Nombre de nuestro servicio (puedes llamarlo como quieras)
+  delicosdiary-app:
+    # Instrucción para construir la imagen de este servicio
+    # El '.' significa que buscará el Dockerfile en el directorio actual
+    build: .
+    # Nombre que le daremos al contenedor cuando se esté ejecutando
+    container_name: delicosdiary_container
+    # Mapeo de puertos
+    # Mapea el puerto 8080 de tu máquina (host) al puerto 80 del contenedor (guest)
+    # Puedes cambiar 8080 por otro puerto si está ocupado, por ejemplo, 3000
+    ports:
+      - "9000:80"
+    # Política de reinicio. 'unless-stopped' reiniciará el contenedor
+    # si se detiene por alguna razón, a menos que tú lo detengas manualmente.
+    restart: unless-stopped
+
