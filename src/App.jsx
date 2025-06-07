@@ -13,6 +13,7 @@ import Unidad4 from './pages/Unidad4/Unidad4';
 import Unidad6 from './pages/Unidad6/Unidad6';
 import Unidad7 from './pages/Unidad7/Unidad7';
 import Unidad8 from './pages/Unidad8/Unidad8';
+import Unidad5 from './pages/Unidad5/Unidad5';
 // Deberás crear estos componentes. Puedes empezar copiando UnidadGenerica.
 // import Unidad3 from './pages/Unidad3/Unidad3';
 // ... y así sucesivamente para todas las unidades.
@@ -33,7 +34,7 @@ function App() {
             o crear componentes específicos como Unidad2.jsx */}
         <Route path="unidad/3" element={<Unidad3/>} /> 
         <Route path="unidad/4" element={<Unidad4/>} />
-        <Route path="unidad/5" element={<Unidad1 />} />
+        <Route path="unidad/5" element={<Unidad5 />} />
         <Route path="unidad/6" element={<Unidad6 />} />
         <Route path="unidad/7" element={<Unidad7 />} />
         <Route path="unidad/8" element={<Unidad8 />} />

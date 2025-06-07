@@ -1,0 +1,137 @@
+/* src/pages/Unidad5/Unidad5.css */
+
+/* --- Estilos de Animación del Libro --- */
+.book-container-u5 { /* Sufijo para esta unidad */
+  perspective: 2500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  padding-top: theme('spacing.8'); 
+  padding-bottom: theme('spacing.8');
+}
+
+.book-u5 {
+  width: 100%; 
+  max-width: theme('maxWidth.3xl'); /* MAX-WIDTH CERRADO */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+}
+
+.book-u5.open {
+  max-width: theme('maxWidth.6xl'); /* MAX-WIDTH ABIERTO */
+}
+
+.book-cover-u5,
+.book-interior-u5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.book-cover-u5 {
+  transform-origin: left center;
+  z-index: 10;
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.3), inset -2px -2px 5px rgba(0,0,0,0.1);
+}
+
+.book-u5.open .book-cover-u5 {
+  transform: rotateY(-170deg);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.4);
+}
+
+.book-interior-u5 {
+  transform: rotateY(0deg);
+  z-index: 5;
+  display: flex; 
+}
+
+/* Lomo central para páginas interiores IGUALES */
+.book-interior-u5::before {
+  content: "";
+  position: absolute;
+  left: 50%; 
+  top: theme('spacing.4');
+  bottom: theme('spacing.4');
+  width: 3px;
+  background-image: linear-gradient(to right, 
+    rgba(0,0,0,0.05), 
+    rgba(0,0,0,0.15), 
+    rgba(0,0,0,0.05)
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.page-area-u5 { 
+  width: 50%; 
+  padding: theme('spacing.6') theme('spacing.4'); 
+  box-sizing: border-box;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* --- Estilos para el Inventario de la Bodega --- */
+.warehouse-scene {
+  @apply w-full h-full p-4 bg-dark-mocha/20 rounded-md border-2 border-dark-hazelnut/30 flex flex-col justify-around;
+}
+
+.shelf {
+  @apply w-full py-4 px-2 bg-dark-hazelnut/40 rounded shadow-inner border-b-4 border-dark-mocha/50 flex flex-wrap justify-center items-center gap-2 md:gap-4;
+}
+
+.shelf-item {
+  @apply text-3xl md:text-4xl;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.inventory-game-panel {
+  @apply h-full flex flex-col justify-center items-center text-center p-4;
+}
+
+.inventory-question {
+  @apply font-korean-title text-2xl md:text-3xl text-dark-mocha mb-6;
+}
+
+.answer-options {
+  @apply grid grid-cols-2 gap-3 w-full max-w-sm;
+}
+.answer-options button {
+  @apply font-korean-handwriting text-xl bg-straw text-almost-black border-2 border-dark-hazelnut/50 rounded-lg py-3 px-4 m-1 hover:bg-medium-topaz hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+}
+.answer-options button.selected {
+    @apply ring-4 ring-offset-2 ring-offset-muted-antique ring-medium-topaz;
+}
+.answer-options button.correct {
+  @apply bg-green-500 text-white border-green-700;
+}
+.answer-options button.incorrect {
+  @apply bg-red-500 text-white border-red-700;
+}
+
+.game-feedback {
+  @apply mt-6 p-3 rounded-md min-h-[60px] w-full max-w-sm;
+}
+.game-feedback.correct {
+  @apply bg-green-100 border border-green-300 text-green-800;
+}
+.game-feedback.incorrect {
+  @apply bg-red-100 border border-red-300 text-red-800;
+}
+.feedback-text {
+  @apply font-serif text-base;
+}
+
+
+@media (min-width: theme('screens.md')) {
+   .page-area-u5 {
+    padding: theme('spacing.8') theme('spacing.6');
+  }
+}

@@ -136,13 +136,20 @@ export const datosUnidades = {
     ]
   },
   5: { 
-    isBookPage: false,
+    isBookPage: true,
+    coverTitleCoreano: "물건 사기 2",
+    coverTitleEspanol: "Contando en la Bodega",
     fecha: "2025년 6월 12일",
-    tituloCoreano: "물건 사기 2",
-    tituloEspanol: "Comprar Cosas 2",
-    gramatica: ["-ㅂ니다/습니다", "-ㅂ니까/습니까", "하고"],
-    vocabulario: ["Números Nativo-Coreanos", "Sustantivos contadores"],
-    contenidoDiario: "어제 문구점에 갔습니다. 공책하고 연필을 샀습니다. 공책 한 권에 얼마입니까? 천오백 원입니다. 연필 두 자루도 주십시오. 네, 알겠습니다.",
+    tituloCoreano: "창고 재고 확인", // "Revisión de Inventario de la Bodega"
+    tituloEspanol: "Inventario de la Bodega",
+    gramatica: ["-ㅂ니다/습니다", "-ㅂ니까/습니까", "고유어 수 (Números Nativos)", "단위 명사 (Contadores)"],
+    vocabulario: ["물건 (objetos)", "세다 (contar)", "창고 (bodega)", "몇 개 (cuántos)"],
+    inventoryItems: [
+        { id: "libros", nameSingular: "책", emoji: "📚", counter: "권", count: 5 },
+        { id: "botellas", nameSingular: "병", emoji: "🍾", counter: "병", count: 3 },
+        { id: "manzanas", nameSingular: "사과", emoji: "🍎", counter: "개", count: 7 },
+        { id: "personas", nameSingular: "사람", emoji: "👷", counter: "명", count: 2 }
+    ]
   },
   6: {
     isBookPage: true,
