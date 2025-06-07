@@ -19,10 +19,10 @@ function Portada() {
       </p>
       
       <div className="content-card max-w-md mx-auto text-left p-6 mb-12 shadow-2xl border-2 border-dark-hazelnut">
-        <p className="font-serif text-straw mb-2"><strong className="text-medium-topaz">Curso:</strong> Coreano 1 (Nivel A1)</p>
-        <p className="font-serif text-straw mb-2"><strong className="text-medium-topaz">Escuela:</strong> UAA</p>
-        <p className="font-serif text-straw mb-2"><strong className="text-medium-topaz">Estudiante:</strong> Tu Nombre Completo</p>
-        <p className="font-serif text-straw"><strong className="text-medium-topaz">Maestra:</strong> Kim María</p>
+        <p className="font-serif text-straw mb-2"><strong className="text-medium-topaz">한국어 1</strong></p>
+        <p className="font-serif text-straw mb-2"><strong className="text-medium-topaz">UAA 대학교</strong></p>
+        <p className="font-serif text-straw mb-2"><strong className="text-medium-topaz">먼츠 마르티네스</strong></p>
+        <p className="font-serif text-straw"><strong className="text-medium-topaz">김 마리아 선생님</strong></p>
       </div>
 
       <Link

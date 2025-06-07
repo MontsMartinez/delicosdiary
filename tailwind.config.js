@@ -23,7 +23,7 @@ export default {
         
         // Nuevas fuentes coreanas
         'korean-title': ['Song Myung', 'serif'], // Para títulos en coreano
-        'korean-handwriting': ['Nanum Pen Script', 'cursive'], // Para el contenido del diario en coreano
+        'korean-handwriting': ['Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'], // Para el contenido del diario en coreano
       },
       boxShadow: {
         'glow-topaz': '0 0 15px 2px rgba(184, 134, 11, 0.5)',
