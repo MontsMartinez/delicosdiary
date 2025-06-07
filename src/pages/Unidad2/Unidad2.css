@@ -1,23 +1,21 @@
 /* src/pages/Unidad2/Unidad2.css */
 
+/* --- Estilos de Animación del Libro (Similares a Unidades anteriores) --- */
 .book-container-u2 {
   perspective: 2500px;
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-left: theme('spacing.4');
-  padding-right: theme('spacing.4');
+  align-items: center; 
 }
 
 .book-u2 {
-  width: 100%;
+  width: 100%; 
   max-width: theme('maxWidth.3xl'); /* MAX-WIDTH CERRADO */
   position: relative;
   transform-style: preserve-3d;
   transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), max-width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .book-u2.open {
@@ -27,6 +25,8 @@
 .book-cover-u2,
 .book-interior-u2 {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
@@ -71,15 +71,18 @@
   width: 50%; 
   padding: theme('spacing.4') theme('spacing.3'); 
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: auto; 
   position: relative;
 }
 
-/* Estilos para la Historieta (Manga Irregular) */
-.comic-grid {
+/* --- Estilos para la Historieta (Manga con Layout Específico) --- */
+.comic-page-layout {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: theme('spacing.3'); 
+  width: 100%;
+  height: 95%; /* Ocupa casi toda la altura de la página */
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr); /* 2 filas: una para los paneles superiores, una para el inferior */
+  gap: theme('spacing.3');
   padding: theme('spacing.1');
 }
 
@@ -95,18 +98,42 @@
   @apply scale-105;
 }
 
-.panel-normal { @apply aspect-[3/4]; }
-.panel-wide { @apply aspect-[16/9] sm:col-span-2; }
-.panel-tall { @apply aspect-[9/16] sm:row-span-2; }
-.panel-large { @apply aspect-square sm:col-span-2 sm:row-span-2; }
+/* Clases para el nuevo layout específico */
+.panel-top-left {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+.panel-top-right {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+.panel-bottom-wide {
+  grid-column: 1 / 3; /* Ocupa las dos columnas */
+  grid-row: 2 / 3;
+}
+
 
 .comic-text-strip {
   @apply absolute left-0 right-0 p-2 bg-black/70 text-white text-center 
          opacity-0 transition-all duration-300 ease-in-out font-korean-handwriting text-base md:text-lg;
 }
-.comic-panel:hover .comic-text-strip-top { @apply opacity-100 -translate-y-0 top-0; }
-.comic-text-strip-top { @apply top-0 translate-y-[-100%]; }
-.comic-panel:hover .comic-text-strip-bottom { @apply opacity-100 translate-y-0 bottom-0; }
-.comic-text-strip-bottom { @apply bottom-0 translate-y-[100%]; }
 
-/* @media (min-width: theme('screens.md')) { ... } */ /* Ya no se necesita para max-width del container */
+.comic-panel:hover .comic-text-strip-top {
+  @apply opacity-100 -translate-y-0 top-0;
+}
+.comic-text-strip-top {
+  @apply top-0 translate-y-[-100%];
+}
+
+.comic-panel:hover .comic-text-strip-bottom {
+  @apply opacity-100 translate-y-0 bottom-0;
+}
+.comic-text-strip-bottom {
+  @apply bottom-0 translate-y-[100%];
+}
+
+@media (min-width: theme('screens.md')) {
+  .page-area-u2 {
+    padding: theme('spacing.6') theme('spacing.4');
+  }
+}

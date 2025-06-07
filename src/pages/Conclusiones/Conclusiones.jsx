@@ -29,18 +29,9 @@ function Conclusiones() {
           
           <p>
             Al concluir este diario, "몬츠의 일기", que ha sido tanto un ejercicio académico como un refugio creativo,
-            me llevo conmigo no solo un conjunto de nuevas habilidades lingüísticas, sino una apreciación más profunda
-            por el arte de la comunicación y la belleza inherente a cada idioma. Este proyecto, nacido como requisito
-            final para el curso de Coreano 1, trascendió su propósito inicial para convertirse en un verdadero viaje
-            de descubrimiento personal y lingüístico.
-          </p>
-          <p>
-            A través de cada unidad, desde la simpleza de una <strong className="font-korean-title">자기소개</strong> (presentación personal) hasta la complejidad
-            de narrar una <strong className="font-korean-title">어제 일과</strong> (rutina de ayer) o describir el <strong className="font-korean-title">날씨</strong> (clima), he tenido la oportunidad
-            de tejer los hilos del vocabulario y la gramática coreana en el tapiz de mis propias ideas y experiencias.
-            Las partículas, las conjugaciones y las nuevas palabras dejaron de ser meros conceptos abstractos para
-            convertirse en herramientas vivas, capaces de dar forma a mis pensamientos en un idioma que, día a día,
-            se siente más cercano.
+            me llevo conmigo no solo un conjunto de nuevas habilidades lingüísticas, sino una apreciación a cada idioma. 
+            Este proyecto, originalmente solo era un requisito final para el curso de Coreano 1, sin embargo se conviertio 
+            en un verdadero viaje de descubrimiento personal y lingüístico.
           </p>
           <p>
             La creación de cada sección interactiva fue un desafío estimulante, buscando no solo cumplir con los
@@ -50,14 +41,8 @@ function Conclusiones() {
           </p>
           <p>
             Quisiera expresar mi más sincero agradecimiento a la Mtra. Kim María, cuya guía, paciencia y entusiasmo
-            han sido fundamentales en este proceso. Su dedicación no solo nos ha enseñado coreano, sino que también
-            nos ha inspirado a explorar y amar su cultura. A la Universidad Autónoma de Aguascalientes, gracias por
-            brindar el espacio para este aprendizaje.
-          </p>
-          <p>
-            Este diario marca el final de una etapa, pero también el comienzo de muchas más aventuras con el idioma coreano.
-            Las puertas que se han abierto son innumerables, y la curiosidad por seguir explorando es más fuerte que nunca.
-            El camino es largo, pero cada palabra aprendida es un paso firme hacia adelante.
+            han sido fundamentales en este proceso. Su dedicación no solo me ha enseñado coreano, sino que también
+            ha inspirado a explorar y amar su cultura.
           </p>
         </div>
 

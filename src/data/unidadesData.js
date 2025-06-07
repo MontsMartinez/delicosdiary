@@ -1,3 +1,11 @@
+import stgo1_cover from '../assets/images/montserrat_autor.jpg';
+import c1 from '../assets/images/comic/u2_panel1.jpg';
+import c2 from '../assets/images/comic/u2_panel2.jpg';
+import c3 from '../assets/images/comic/u2_panel3.jpg';
+import c4 from '../assets/images/comic/u2_panel4.jpg';
+import c5 from '../assets/images/comic/u2_panel5.jpg';
+import c6 from '../assets/images/comic/u2_panel6.jpg';
+import ropero from '../assets/images/ropero_vintage.jpg';
 // src/data/unidadesData.js
 
 export const datosUnidades = {
@@ -6,11 +14,11 @@ export const datosUnidades = {
     isBookPage: true,
     coverTitleCoreano: "자기소개",
     coverTitleEspanol: "Presentación del Autor",
-    authorImage: "/assets/images/montserrat_autor.jpg",
+    authorImage: stgo1_cover,
     authorNameCoreano: "몬트세라트 마르티네스",
     authorBioCoreano: [
-      "안녕하세요! 제 이름은 몬트세라트 마르티네스예요. 저는 멕시코 사람이에요. 지금은 아과스칼리엔테스 자치대학교에서 학생으로 공부하고 있어요.",
-      "한국 문화와 언어에 대한 관심이 많아서 한국어 수업을 듣기 시작했어요. 이 일기는 제 한국어 학습 여정을 기록하고, 배운 것을 연습하는 공간이에요.",
+      "안녕하세요! 제 이름은 몬트세라트 마르티네스예요. 저는 멕시코 사람이에요.",
+      "저는 컴퓨터 시스템 엔지녀여요, 만나서 반가워요",
       "제 취미는 그림 그리기와 오래된 책 읽기예요. 이 일기를 통해 제 생각과 경험을 나누고 싶어요. 잘 부탁드립니다!",
     ],
     fecha: "2025년 5월 15일",
@@ -29,33 +37,76 @@ export const datosUnidades = {
     gramatica: ["아요/어요", "에 가다"],
     vocabulario: ["Acciones cotidianas", "Lugares comunes", "Expresiones de tiempo básicas"],
     comicPanels: [ 
-      { id: 1, imageSrc: "/assets/images/comic/u2_panel1.png", altText: "Despertando por la mañana", hoverTextCoreano: "아침 일곱 시에 일어나요.", textPosition: "bottom", layoutClass: "panel-normal" },
-      { id: 2, imageSrc: "/assets/images/comic/u2_panel2.png", altText: "Tomando café", hoverTextCoreano: "커피를 마셔요. 그리고 빵을 먹어요.", textPosition: "top", layoutClass: "panel-wide" },
-      { id: 3, imageSrc: "/assets/images/comic/u2_panel3.png", altText: "Yendo a la universidad", hoverTextCoreano: "오전 아홉 시에 학교에 가요.", textPosition: "bottom", layoutClass: "panel-normal" },
-      { id: 4, imageSrc: "/assets/images/comic/u2_panel4.png", altText: "Estudiando en la biblioteca", hoverTextCoreano: "도서관에서 한국어를 공부해요.", textPosition: "top", layoutClass: "panel-tall" },
-      { id: 5, imageSrc: "/assets/images/comic/u2_panel5.png", altText: "Almorzando con amigos", hoverTextCoreano: "점심에 친구하고 식당에 가요. 비빔밥을 먹어요.", textPosition: "bottom", layoutClass: "panel-normal" },
-      { id: 6, imageSrc: "/assets/images/comic/u2_panel6.png", altText: "Volviendo a casa por la tarde", hoverTextCoreano: "오후 다섯 시에 집에 와요.", textPosition: "top", layoutClass: "panel-wide" }
+      {
+        id: 1,
+        imageSrc: c1, 
+        altText: "Yo leo un libro",
+        hoverTextCoreano: "저는 책이 봐요.",
+        textPosition: "bottom",
+        layoutClass: "panel-top-left", 
+      },
+      {
+        id: 2,
+        imageSrc: c3,
+        altText: "jugando video juegos",
+        hoverTextCoreano: "비디오 게임을 하고 있어요.",
+        textPosition: "top",
+        layoutClass: "panel-top-right",
+      },
+      {
+        id: 3,
+        imageSrc: c2,
+        altText: "nosotros estudiamos mathematicas",
+        hoverTextCoreano: "우리는 수학을 공부해요.",
+        textPosition: "bottom",
+        layoutClass: "panel-bottom-wide", 
+      },
+      // Página 2
+      {
+        id: 4,
+        imageSrc: c4,
+        altText: "Estudiando en la biblioteca",
+        hoverTextCoreano: "도서관에서 한국어를 공부해요.",
+        textPosition: "top",
+        layoutClass: "panel-top-left",
+      },
+      {
+        id: 5,
+        imageSrc: c5,
+        altText: "nosotros hicimos pizza",
+        hoverTextCoreano: "우리는 피자를 만들어요",
+        textPosition: "bottom",
+        layoutClass: "panel-top-right", 
+      },
+      {
+        id: 6,
+        imageSrc: c6,
+        altText: "nosotros vamos al cine",
+        hoverTextCoreano: "우리는 영화관에 가요.",
+        textPosition: "top",
+        layoutClass: "panel-bottom-wide",
+      }
     ],
   },
   3: {
     isBookPage: true,
     coverTitleCoreano: "위치", 
-    coverTitleEspanol: "En Mi Habitación",
+    coverTitleEspanol: "En Mi librero",
     fecha: "2025년 5월 29일",
-    tituloCoreano: "내 방의 물건들", 
+    tituloCoreano: "내 라이브러리에 물건들", 
     tituloEspanol: "Objetos en Mi Cuarto",
     gramatica: ["이/가", "에 있다/없다"],
     vocabulario: ["가구 (muebles)", "물건 (objetos)", "위치 단어 (palabras de ubicación)"],
-    wardrobeImageSrc: "/assets/images/ropero_vintage.png", 
+    wardrobeImageSrc: ropero, 
     wardrobeItems: [
-      { id: "ropa", itemCoreano: "옷", descriptionCoreano: "옷이 옷장 안에 있어요.", positionClasses: "top-[10%] left-[-25%] md:left-[-15%] transform -translate-y-1/2" },
-      { id: "zapatos", itemCoreano: "신발", descriptionCoreano: "신발이 옷장 밑에 있어요.", positionClasses: "bottom-[-5%] left-[50%] transform -translate-x-1/2 translate-y-0" },
-      { id: "sombrero", itemCoreano: "모자", descriptionCoreano: "모자가 선반 위에 있어요.", positionClasses: "top-[5%] right-[-25%] md:right-[-15%] transform -translate-y-1/2" },
-      { id: "caja", itemCoreano: "상자", descriptionCoreano: "상자가 옷장 옆에 있어요.", positionClasses: "top-[60%] right-[-28%] md:right-[-20%] transform -translate-y-1/2" },
-      { id: "espejo", itemCoreano: "거울", descriptionCoreano: "거울이 옷장 문에 없어요.", positionClasses: "bottom-[10%] right-[-28%] md:right-[-20%] transform translate-y-1/2 bg-red-200/70 text-red-700" },
-      { id: "libros", itemCoreano: "책들", descriptionCoreano: "책들이 선반 위에 있어요.", positionClasses: "top-[20%] right-[-25%] md:right-[-18%] transform -translate-y-1/2" },
-      { id: "bolso", itemCoreano: "가방", descriptionCoreano: "가방이 옷장 왼쪽에 있어요.", positionClasses: "top-[50%] left-[-28%] md:left-[-20%] transform -translate-y-1/2" },
-      { id: "planta", itemCoreano: "화분", descriptionCoreano: "화분이 옷장 위에 없어요.", positionClasses: "top-[-5%] left-[50%] transform -translate-x-1/2 -translate-y-0 bg-orange-200/70 text-orange-700" }
+      { id: "1", itemCoreano: "옷", descriptionCoreano: "아리엘이 Bestiarius 책 앞에 있어요.", positionClasses: "top-[10%] left-[-1%] md:left-[-15%] transform -translate-y-1/2" },
+      { id: "2", itemCoreano: "신발", descriptionCoreano: "Dr. sueño책이 Vinland Saga만화 뒤에 있어요.", positionClasses: "bottom-[-5%] left-[50%] transform -translate-x-1/2 translate-y-0" },
+      { id: "3", itemCoreano: "모자", descriptionCoreano: "iluminae책이 용 아래에 있어요.", positionClasses: "top-[5%] right-[-25%] md:right-[-15%] transform -translate-y-1/2" },
+      { id: "4", itemCoreano: "상자", descriptionCoreano: "고저가 용 안에 없어요.", positionClasses: "top-[60%] right-[-28%] md:right-[-20%] transform -translate-y-1/2" },
+      { id: "5", itemCoreano: "거울", descriptionCoreano: "TAP 앨범이 토끼 뒤에 있어요.", positionClasses: "bottom-[10%] right-[-28%] md:right-[-20%] transform translate-y-1/2 bg-red-200/70 text-red-700" },
+      { id: "6", itemCoreano: "책들", descriptionCoreano: "BAMBY 앨범이 재범 뒤에 있어요.", positionClasses: "top-[20%] right-[-25%] md:right-[-18%] transform -translate-y-1/2" },
+      { id: "7", itemCoreano: "가방", descriptionCoreano: "Overdose 앨범이 BAMBY 앨범 뒤에 있어요.", positionClasses: "top-[50%] left-[-28%] md:left-[-20%] transform -translate-y-1/2" },
+      { id: "8", itemCoreano: "화분", descriptionCoreano: "진영가 BAMBY 앨범 위에 있어요.", positionClasses: "top-[-5%] left-[50%] transform -translate-x-1/2 -translate-y-0 bg-orange-200/70 text-orange-700" }
     ],
   },
   4: {
@@ -105,10 +156,10 @@ export const datosUnidades = {
     mapImageSrc: "src/assets/map.svg", 
     adventurePathCoords: "M50,300 C100,200 150,100 250,150 S350,250 400,180 C450,100 550,150 600,100", 
     pointsOfInterest: [
-      { id: "casa_mañana", nameCoreano: "집 (아침)", position: { top: '80%', left: '15%' }, iconType: "home", logEntryCoreano: "아침에 집에서 일어났어요. 그리고 아침밥을 먹었어요.", logIllustrationSrc: "/assets/images/log_desayuno.png" },
-      { id: "parque_ejercicio", nameCoreano: "공원", position: { top: '50%', left: '35%' }, iconType: "leaf", logEntryCoreano: "공원에서 친구하고 같이 운동했어요. 날씨가 좋았어요.", logIllustrationSrc: "/assets/images/log_parque.png" },
-      { id: "biblioteca_estudio", nameCoreano: "도서관", position: { top: '30%', left: '60%' }, iconType: "book", logEntryCoreano: "도서관에서 한국어 숙제를 했어요. 아주 조용했어요.", logIllustrationSrc: "/assets/images/log_biblioteca.png" },
-      { id: "restaurante_cena", nameCoreano: "식당", position: { top: '65%', left: '75%' }, iconType: "coffee", logEntryCoreano: "저녁에 식당에서 가족하고 맛있는 저녁을 먹었어요. 불고기가 최고였어요!", logIllustrationSrc: "/assets/images/log_cena.png" }
+      { id: "casa_mañana", nameCoreano: "집 (아침)", position: { top: '80%', left: '15%' }, iconType: "home", logEntryCoreano: "재범하고 나는 Undercourt에서 운동을 했어요.", logIllustrationSrc: "/assets/images/log_desayuno.png" },
+      { id: "parque_ejercicio", nameCoreano: "공원", position: { top: '50%', left: '35%' }, iconType: "leaf", logEntryCoreano: "우리 집은 GoldHeart에 있어요.", logIllustrationSrc: "/assets/images/log_parque.png" },
+      { id: "biblioteca_estudio", nameCoreano: "도서관", position: { top: '30%', left: '60%' }, iconType: "book", logEntryCoreano: "친구를 ShadowTown에사 한국어 가르쳐요.", logIllustrationSrc: "/assets/images/log_biblioteca.png" },
+      { id: "restaurante_cena", nameCoreano: "식당", position: { top: '65%', left: '75%' }, iconType: "coffee", logEntryCoreano: "아침에 집에서 일어났어요. 그리고 라면을 먹었어요.", logIllustrationSrc: "/assets/images/log_cena.png" }
     ]
   },
   7: {

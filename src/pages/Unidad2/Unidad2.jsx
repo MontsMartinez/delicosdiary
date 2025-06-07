@@ -15,8 +15,7 @@ function Unidad2() {
 
   useEffect(() => {
     if (!unidadData || !unidadData.isBookPage || numeroUnidad !== 2) {
-      console.warn(`Cargando Unidad2.jsx para unidad ${numeroUnidad} que no es la esperada o no tiene datos de libro.`);
-      // navigate('/indice', { replace: true }); 
+      console.warn(`Cargando Unidad2.jsx para unidad ${numeroUnidad} que no es la esperada.`);
     }
   }, [unidadData, numeroUnidad, navigate]);
 
@@ -27,14 +26,28 @@ function Unidad2() {
       </div>
   );
 
-  // Determinar cuántos paneles van en la página izquierda.
-  // Esto puede necesitar ser más sofisticado si los layouts son muy complejos.
-  // Por ahora, una simple división o un número fijo.
-  const panelsPerPage = unidadData.comicPanels?.length || 0;
-  // Para un layout irregular, es mejor definir cuántos paneles quieres por página
-  // o cómo se distribuyen. Aquí, por simplicidad, intentaremos dividir.
-  // Si un panel "wide" cae al final de la página izquierda, podría necesitar ajustes manuales en los datos.
-  const midPoint = Math.ceil(panelsPerPage / 2);
+  // Dividir los paneles para las dos páginas (3 paneles por página)
+  const panelsPage1 = unidadData.comicPanels?.slice(0, 3) || [];
+  const panelsPage2 = unidadData.comicPanels?.slice(3, 6) || [];
+
+  const ComicPage = ({ panels }) => (
+    <div className="comic-page-layout">
+      {panels.map(panel => (
+        <div key={panel.id} className={`comic-panel group ${panel.layoutClass || ''}`}>
+          <img 
+            src={panel.imageSrc || `https://placehold.co/400x500/A4957E/1A1A1A?text=${panel.altText}`} 
+            alt={panel.altText} 
+            onError={(e) => e.target.src = `https://placehold.co/400x500/A4957E/1A1A1A?text=Error`}
+          />
+          <div 
+            className={`comic-text-strip ${panel.textPosition === 'top' ? 'comic-text-strip-top' : 'comic-text-strip-bottom'}`}
+          >
+            {panel.hoverTextCoreano}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
 
   return (
@@ -47,7 +60,6 @@ function Unidad2() {
           {/* Portada del Libro */}
           <div 
             className="book-cover-u2 bg-dark-hazelnut p-6 rounded-r-lg rounded-l-md border-t-4 border-b-4 border-r-4 border-l-8 border-dark-mocha flex flex-col justify-between items-center text-center"
-            // style={{ backgroundImage: "url('/assets/textures/leather_texture.png')", backgroundSize: 'cover' }}
           >
             <div> 
               <h1 className="text-4xl md:text-5xl font-korean-title text-straw mt-8 mb-2 !leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}>
@@ -75,51 +87,14 @@ function Unidad2() {
           {/* Contenido Interior del Libro */}
           <div className="book-interior-u2 bg-muted-antique text-almost-black rounded-lg shadow-inner-page">
             <div className="page-area-u2 custom-scrollbar">
-              <h3 className="font-korean-title text-xl md:text-2xl text-dark-mocha mb-3 text-center pt-2 md:pt-4">
-                {unidadData.tituloCoreano || "나의 하루"} (1)
-              </h3>
-              <div className="comic-grid">
-                {unidadData.comicPanels?.slice(0, midPoint).map(panel => (
-                  <div key={panel.id} className={`comic-panel group ${panel.layoutClass || 'panel-normal'}`}>
-                    <img 
-                      src={panel.imageSrc || `https://placehold.co/400x500/A4957E/1A1A1A?text=${panel.altText}`} 
-                      alt={panel.altText} 
-                      onError={(e) => e.target.src = `https://placehold.co/400x500/A4957E/1A1A1A?text=Error`}
-                    />
-                    <div 
-                      className={`comic-text-strip ${panel.textPosition === 'top' ? 'comic-text-strip-top' : 'comic-text-strip-bottom'}`}
-                    >
-                      {panel.hoverTextCoreano}
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <ComicPage panels={panelsPage1} />
             </div>
-
             <div className="page-area-u2 custom-scrollbar">
-              <h3 className="font-korean-title text-xl md:text-2xl text-dark-mocha mb-3 text-center pt-2 md:pt-4">
-                {unidadData.tituloCoreano || "나의 하루"} (2)
-              </h3>
-              <div className="comic-grid">
-                {unidadData.comicPanels?.slice(midPoint).map(panel => (
-                  <div key={panel.id} className={`comic-panel group ${panel.layoutClass || 'panel-normal'}`}>
-                    <img 
-                      src={panel.imageSrc || `https://placehold.co/400x500/A4957E/1A1A1A?text=${panel.altText}`} 
-                      alt={panel.altText}
-                      onError={(e) => e.target.src = `https://placehold.co/400x500/A4957E/1A1A1A?text=Error`}
-                    />
-                    <div 
-                      className={`comic-text-strip ${panel.textPosition === 'top' ? 'comic-text-strip-top' : 'comic-text-strip-bottom'}`}
-                    >
-                      {panel.hoverTextCoreano}
-                    </div>
-                  </div>
-                ))}
-              </div>
-               {isBookOpen && (
-                <div className="text-center mt-auto pt-6 pb-4"> {/* mt-auto para empujar al fondo si hay espacio */}
-                  <Link to={numeroUnidad < totalUnidades ? `/unidad/${numeroUnidad + 1}` : "/indice"} className="btn-secondary-vintage !text-dark-mocha !border-dark-mocha hover:!bg-dark-mocha hover:!text-white">
-                    Continuar <FiChevronsRight className="inline ml-1" />
+              <ComicPage panels={panelsPage2} />
+              {isBookOpen && (
+                <div className="absolute bottom-4 right-4 text-center">
+                  <Link to={numeroUnidad < totalUnidades ? `/unidad/${numeroUnidad + 1}` : "/indice"} className="btn-secondary-vintage !text-dark-mocha !border-dark-mocha hover:!bg-dark-mocha hover:!text-white text-sm">
+                    Continuar <FiChevronsRight className="inline ml-1"/>
                   </Link>
                 </div>
               )}
