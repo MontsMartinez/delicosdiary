@@ -175,14 +175,7 @@ function Unidad6() {
               </p>
             )}
             <p className="log-entry-text">{selectedPoi.logEntryCoreano}</p>
-            {selectedPoi.logIllustrationSrc && (
-              <img 
-                src={selectedPoi.logIllustrationSrc || `https://placehold.co/300x200/A4957E/1A1A1A?text=Ilustración`} 
-                alt={`Ilustración de ${selectedPoi.nameCoreano}`} 
-                className="log-entry-illustration"
-                onError={(e) => e.target.src = `https://placehold.co/300x200/A4957E/1A1A1A?text=Error`}
-              />
-            )}
+            
           </div>
         </div>
       )}

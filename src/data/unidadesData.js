@@ -156,10 +156,10 @@ export const datosUnidades = {
     mapImageSrc: "src/assets/map.svg", 
     adventurePathCoords: "M50,300 C100,200 150,100 250,150 S350,250 400,180 C450,100 550,150 600,100", 
     pointsOfInterest: [
-      { id: "casa_mañana", nameCoreano: "집 (아침)", position: { top: '80%', left: '15%' }, iconType: "home", logEntryCoreano: "재범하고 나는 Undercourt에서 운동을 했어요.", logIllustrationSrc: "/assets/images/log_desayuno.png" },
-      { id: "parque_ejercicio", nameCoreano: "공원", position: { top: '50%', left: '35%' }, iconType: "leaf", logEntryCoreano: "우리 집은 GoldHeart에 있어요.", logIllustrationSrc: "/assets/images/log_parque.png" },
-      { id: "biblioteca_estudio", nameCoreano: "도서관", position: { top: '30%', left: '60%' }, iconType: "book", logEntryCoreano: "친구를 ShadowTown에사 한국어 가르쳐요.", logIllustrationSrc: "/assets/images/log_biblioteca.png" },
-      { id: "restaurante_cena", nameCoreano: "식당", position: { top: '65%', left: '75%' }, iconType: "coffee", logEntryCoreano: "아침에 집에서 일어났어요. 그리고 라면을 먹었어요.", logIllustrationSrc: "/assets/images/log_cena.png" }
+      { id: "casa_mañana", nameCoreano: "집 (아침)", position: { top: '80%', left: '15%' }, iconType: "home", logEntryCoreano: "재범하고 나는 Undercourt에서 운동을 했어요."},
+      { id: "parque_ejercicio", nameCoreano: "공원", position: { top: '50%', left: '35%' }, iconType: "leaf", logEntryCoreano: "우리 집은 GoldHeart에 있어요." },
+      { id: "biblioteca_estudio", nameCoreano: "도서관", position: { top: '30%', left: '60%' }, iconType: "book", logEntryCoreano: "친구를 ShadowTown에사 한국어 가르쳐요."},
+      { id: "restaurante_cena", nameCoreano: "식당", position: { top: '65%', left: '75%' }, iconType: "coffee", logEntryCoreano: "아침에 집에서 일어났어요. 그리고 라면을 먹었어요."}
     ]
   },
   7: {
